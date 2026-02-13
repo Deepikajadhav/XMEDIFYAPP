@@ -1,38 +1,43 @@
-.App {
-  text-align: center;
+
+.App{
+    width: 100vw;
+    height: 100%;
+    font-family: "Poppins", sans-serif;;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+/* COMMON STYLES */
+.commonContainer{
+    width: 100%;
+    max-width: var(--appWidth);
+    height: 100%;
+    /* margin: 0 1rem; */
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.paddingForSmallScreens{
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.uppercase{
+    text-transform: uppercase;
 }
 
-.App-link {
-  color: #61dafb;
+.capitalize{
+    text-transform: capitalize;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* screen below 1200px */
+@media screen and (max-width: 1200px) {
+    .commonContainer{
+        padding: 0 1rem;
+    }
+}
+
+.inheritBackground{
+    background-color: inherit !important;
+
 }
