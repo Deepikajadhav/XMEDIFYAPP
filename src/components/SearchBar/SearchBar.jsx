@@ -75,7 +75,8 @@ const SearchBar = props => {
             setAllCities(cities.data);
             fetchingCities.current = false;
             setDisableCityInput(undefined);
-        }
+        } 
+        
         if(dataType === "hospitals"){
             setFetchingHospitals(true);
             const hospitals = await axios.get(`${api}/data?state=${stateName}&city=${cityName}`);

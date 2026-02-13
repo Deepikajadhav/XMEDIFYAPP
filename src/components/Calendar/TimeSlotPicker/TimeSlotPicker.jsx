@@ -34,7 +34,29 @@ export default function TimeSlotPicker({
       pt={3}
       spacing={{ xs: 2, md: 3 }}
       divider={<Divider orientation="horizontal" flexItem />}
-    >
+    >  
+      {availableSlots.morning.length > 0 && (
+        <Stack
+          direction="row"
+          alignItems="center"
+          px={{ xs: 0, md: 6 }}
+          flexWrap={"wrap"}
+        >
+          <p
+            width={{ xs: 1, md: "15%" }}
+            fontSize={{ xs: 14, md: 16 }}
+          >
+            Today
+          </p>
+          {availableSlots.morning.map((slot) => (
+            <CustomChip
+              key={slot}
+              label={slot}
+              handleClick={() => handleClick(slot)}
+            />
+          ))}
+        </Stack>
+      )}
       {availableSlots.morning.length > 0 && (
         <Stack
           direction="row"
