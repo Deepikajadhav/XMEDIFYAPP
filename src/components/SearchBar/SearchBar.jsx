@@ -55,10 +55,28 @@ const SearchBar = props => {
     }, [hospitalName]) 
 
     useEffect(() => {
-                      axios.get(`${api}/states`).then(res => {
-                      setAllStates(res.data);
-                      });
-                    }, []);
+  axios
+    .get(`${api}/states`)
+    .then(res => {
+      setAllStates(res.data);
+    })
+    .catch(err => {
+      console.error("Failed to fetch states:", err);
+      setAllStates([]); // prevent crash
+    });
+}, []);  
+
+//      const fetchCities = (state) => {
+//   axios
+//     .get(`${api}/cities/${state}`)
+//     .then(res => setCities(res.data))
+//     .catch(err => {
+//       console.error("Failed to fetch cities:", err);
+//       setCities([]);
+//     });
+// };
+
+
 
 
     //functions
