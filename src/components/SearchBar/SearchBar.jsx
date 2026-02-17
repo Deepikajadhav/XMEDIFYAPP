@@ -66,18 +66,6 @@ const SearchBar = props => {
     });
 }, []);  
 
-//      const fetchCities = (state) => {
-//   axios
-//     .get(`${api}/cities/${state}`)
-//     .then(res => setCities(res.data))
-//     .catch(err => {
-//       console.error("Failed to fetch cities:", err);
-//       setCities([]);
-//     });
-// };
-
-
-
 
     //functions
     const handleSubmit = async event => {
@@ -98,7 +86,7 @@ const SearchBar = props => {
             setDisableCityInput(undefined);
         } 
         
-        if(dataType === "hospitals"){
+        if(dataType === "hospitals")  {
             setFetchingHospitals(true);
             const hospitals = await axios.get(`${api}/data?state=${stateName}&city=${cityName}`);
 
@@ -177,7 +165,7 @@ const SearchBar = props => {
                 <SearchPop atBookingsPage={true} hospitals={filteredHospitals} clickFunction={clickStateSuggestions}/>
             </span>
         )
-    }
+     }
         return( 
         <>
             <span className='inputWrapper'>
@@ -186,7 +174,7 @@ const SearchBar = props => {
                 onClick={() => {
                 setShowStateDropdown(true);
                 setFilteredStates(allStates); // show all states
-                 }}>
+                 }}> 
                 <input 
                 type='text' 
                 value={stateName} 
@@ -211,7 +199,7 @@ const SearchBar = props => {
                 onClick={() => {
                 setShowCityDropdown(true);
                 setFilteredCities(allCities); // show all states
-                }}>
+                }}> 
                 <input 
                 type='text' 
                 value={cityName} 

@@ -44,7 +44,7 @@
     border-radius: 0 0 1rem 1rem;
     max-height: 500px;
     box-shadow: 6px 6px 35px 0px #1028511C;
-    overflow: auto;
+    /* //overflow: auto; */
 }
 
 .SearchPopItem{
