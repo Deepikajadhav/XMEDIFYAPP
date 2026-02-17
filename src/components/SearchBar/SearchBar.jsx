@@ -101,16 +101,18 @@ const SearchBar = props => {
             stateName_onChange.current = true;
             setStateName(value)
             setDisableCityInput("disableCityInput");
+            setShowStateDropdown(true);
             cityName_onChange.current = false;
             setCityName("")
         }
 
         if(name === "city"){
             cityName_onChange.current = true;
-            setCityName(value)
+            setCityName(value);
+            setShowCityDropdown(true);
         }
 
-        if(name === "hospitalName"){
+        if(name === "hospitalName") {
             setHospitalName(value);
         }
     }
@@ -146,13 +148,20 @@ const SearchBar = props => {
         cityName_onChange.current = false;
         
         setCityName(nameOfCity)
-    }
+    }   
+
+        useEffect(() => {
+       if (allStates.length && showStateDropdown) {
+         setFilteredStates(allStates);
+         }
+       }, [allStates, showStateDropdown]);
+
 
     const displayInputs = () => {
         if(atBookingsPage){
             return (
             <span className='inputWrapper'>
-                <img src={location}/> 
+            <img src={location}/> 
                 <input 
                 type='text' 
                 value={hospitalName} 
@@ -162,7 +171,7 @@ const SearchBar = props => {
                  id='hospitalName'
                 required
                 />
-                <SearchPop atBookingsPage={true} hospitals={filteredHospitals} clickFunction={clickStateSuggestions}/>
+    <SearchPop atBookingsPage={true} hospitals={filteredHospitals} clickFunction={clickStateSuggestions}/>
             </span>
         )
      }
@@ -181,7 +190,6 @@ const SearchBar = props => {
                 name='state' 
                 onChange={handleChange}
                 placeholder='state'
-                 readOnly
                 />
                 </div>
                 {showStateDropdown && (
@@ -206,8 +214,7 @@ const SearchBar = props => {
                 name='city' 
                 onChange={handleChange}
                 placeholder={fetchingCities.current ? "Fetching cities..." :'city'}
-                disabled={!displayInputs || fetchingCities.current} 
-                 readOnly
+                disabled={!displayInputs || fetchingCities.current}
                 /> 
                 </div>
                 {showCityDropdown && (
