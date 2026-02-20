@@ -21,8 +21,8 @@ const SearchBar = props => {
     //const
     const { customClass, atBookingsPage, atHomePage } = props;
     //contexts
-    const [bookings, setBookings] = useContext(BookingsContext)
-    const [foundHospitals, setFoundHospitals] = useContext(FoundHospitalsContext)
+    const [bookings, setBookings] = useContext(BookingsContext);
+    const [foundHospitals, setFoundHospitals] = useContext(FoundHospitalsContext);
     //states
     const [stateName, setStateName] = useState("");
     const [cityName, setCityName] = useState("");
@@ -33,9 +33,10 @@ const SearchBar = props => {
     const [filteredCities, setFilteredCities] = useState([]);
     const [disableCityInput, setDisableCityInput] = useState(undefined);
     const [filteredHospitals, setFilteredHospitals] = useState([]);
-    const [fetchingHospitals, setFetchingHospitals] = useState(false)
+    const [fetchingHospitals, setFetchingHospitals] = useState(false);
     const [showStateDropdown, setShowStateDropdown] = useState(false);
-    const [showCityDropdown, setShowCityDropdown] = useState(false);
+    const [showCityDropdown, setShowCityDropdown] = useState(false); 
+    
 
     //refs
     const stateName_onChange = useRef(false);
@@ -55,7 +56,7 @@ const SearchBar = props => {
     }, [hospitalName]) 
 
     useEffect(() => {
-  axios
+    axios
     .get(`${api}/states`)
     .then(res => {
       setAllStates(res.data);
@@ -64,7 +65,13 @@ const SearchBar = props => {
       console.error("Failed to fetch states:", err);
       setAllStates([]); // prevent crash
     });
-}, []);  
+}, []); 
+
+//      useEffect(() => {
+//   if (selectedState && selectedCity) {
+//     fetchHospitals(selectedState, selectedCity);
+//   }
+// }, [selectedState, selectedCity]);
 
 
     //functions
@@ -78,7 +85,7 @@ const SearchBar = props => {
     }
 
     const getLocationData = async (dataType, location) => {
-        if(dataType == "cities"){
+        if(dataType == "cities") {
             fetchingCities.current = true;
             const cities = await axios.get(`${api}/cities/${location}`);
             setAllCities(cities.data);

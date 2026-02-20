@@ -2,12 +2,16 @@ import { MenuItem, Select, Button, InputAdornment, Box } from "@mui/material";
 import { useEffect, useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate , useSearchParams } from "react-router-dom";
 
 export default function HospitalSearch() {
   const [states, setStates] = useState([]);
   const [cities, setCities] = useState([]);
   const [formData, setFormData] = useState({ state: "", city: "" });
+  const [searchParams] = useSearchParams();
+const selectedState = searchParams.get("state");
+const selectedCity = searchParams.get("city");
+const [hospitals, setHospitals] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -23,7 +27,13 @@ export default function HospitalSearch() {
     };
 
     fetchStates();
-  }, []);
+  }, []);  
+
+   useEffect(() => {
+  if (selectedState && selectedCity) {
+    fetchHospitals(selectedState, selectedCity);
+  }
+}, [selectedState, selectedCity]);
 
   useEffect(() => {
     const fetchCities = async () => {
@@ -54,7 +64,18 @@ export default function HospitalSearch() {
     if (formData.state && formData.city) {
       navigate(`/search?state=${formData.state}&city=${formData.city}`);
     }
-  };
+  };  
+
+  const fetchHospitals = async (state, city) => {
+  try {
+    const response = await axios.get(
+      `https://meddata-backend.onrender.com/data?state=${state}&city=${city}`
+    );
+    setHospitals(response.data);
+  } catch (error) {
+    console.log(error);
+  }
+};
 
   return (
     <Box
