@@ -37,7 +37,7 @@ const SearchBar = props => {
     const [showStateDropdown, setShowStateDropdown] = useState(false);
     const [showCityDropdown, setShowCityDropdown] = useState(false); 
     
-
+    
     //refs
     const stateName_onChange = useRef(false);
     const cityName_onChange = useRef(false);
@@ -65,24 +65,25 @@ const SearchBar = props => {
       console.error("Failed to fetch states:", err);
       setAllStates([]); // prevent crash
     });
-}, []); 
-
-//      useEffect(() => {
-//   if (selectedState && selectedCity) {
-//     fetchHospitals(selectedState, selectedCity);
-//   }
-// }, [selectedState, selectedCity]);
-
+   }, []); 
 
     //functions
-    const handleSubmit = async event => {
-        event.preventDefault();
-        
-        // if(atBookingsPage) return filterBookingsFunc();
+      const handleSubmit = (e) => {
+//       e.preventDefault();
 
-        getLocationData("hospitals")
-        
-    }
+//      if (stateName && cityName) {
+//      navigate(`/find?state=${stateName}&city=${cityName}`); 
+//   }  
+
+         if (!state || !city) return;
+
+    navigate("/find", {
+      state: {
+        selectedState: state,
+        selectedCity: city
+      }
+    });
+  };
 
     const getLocationData = async (dataType, location) => {
         if(dataType == "cities") {
@@ -101,7 +102,7 @@ const SearchBar = props => {
             setFetchingHospitals(false);
         }
     }
-    const handleChange = event => {
+        const handleChange = event => {
         const {value, name} = event.target;
         
         if(name === "state"){
@@ -123,7 +124,7 @@ const SearchBar = props => {
             setHospitalName(value);
         }
     }
-    const filterStatesFunc = () => {
+        const filterStatesFunc = () => {
         
         let foundStates = findLocations(allStates, stateName);
         setFilteredStates(foundStates);
@@ -142,7 +143,7 @@ const SearchBar = props => {
         setFilteredHospitals(hospitals);
     } 
 
-    const clickStateSuggestions = (nameOfState) => {
+        const clickStateSuggestions = (nameOfState) => {
         setFilteredStates([]);
         stateName_onChange.current = false;
         
@@ -150,12 +151,12 @@ const SearchBar = props => {
 
         getLocationData("cities", nameOfState);
     }
-    const clickCitySuggetions = (nameOfCity) => {
+        const clickCitySuggetions = (nameOfCity) => {
         setFilteredCities([]);
         cityName_onChange.current = false;
         
         setCityName(nameOfCity)
-    }   
+    }                                                                                    
 
         useEffect(() => {
        if (allStates.length && showStateDropdown) {
@@ -175,13 +176,15 @@ const SearchBar = props => {
                 name='hospitalName' 
                 onChange={handleChange}
                 placeholder='Search By Hospital'
-                 id='hospitalName'
+                id='hospitalName'
                 required
                 />
-    <SearchPop atBookingsPage={true} hospitals={filteredHospitals} clickFunction={clickStateSuggestions}/>
+     <SearchPop atBookingsPage={true} hospitals={filteredHospitals} clickFunction={clickStateSuggestions}/>
             </span>
         )
-     }
+     }  
+
+    
         return( 
         <>
             <span className='inputWrapper'>
@@ -196,12 +199,17 @@ const SearchBar = props => {
                 value={stateName} 
                 name='state' 
                 onChange={handleChange}
-                placeholder='state'
+                placeholder='state' 
+                readOnly
+                onClick={(e) => {
+                e.preventDefault();          // 🔥 stops form submit
+                setShowStateDropdown(true);  // ✅ just show dropdown
+                }}
                 />
                 </div>
                 {showStateDropdown && (
                 <SearchPop locations={filteredStates} 
-                clickFunction = {(state) =>{clickStateSuggestions(state);
+                 clickFunction = {(state) =>{clickStateSuggestions(state);
                  setShowStateDropdown(false);
                 }}
                 />
@@ -209,7 +217,7 @@ const SearchBar = props => {
             </span>
             
             <span className={`inputWrapper ${disableCityInput}`}>
-                <img src={fetchingCities.current ? loadingIcon : location} className={fetchingCities.current ? 'rotateLoad' : null}/> 
+            <img src={fetchingCities.current ? loadingIcon : location} className={fetchingCities.current ? 'rotateLoad' : null}/> 
                 <div id="city" className="dropdownInput" 
                 onClick={() => {
                 setShowCityDropdown(true);
@@ -221,7 +229,12 @@ const SearchBar = props => {
                 name='city' 
                 onChange={handleChange}
                 placeholder={fetchingCities.current ? "Fetching cities..." :'city'}
-                disabled={!displayInputs || fetchingCities.current}
+                disabled={!displayInputs || fetchingCities.current}  
+                readOnly
+                onClick={(e) => {
+                e.preventDefault();          // 🔥 stops form submit
+                setShowCityDropdown(true);  // ✅ just show dropdown
+                }}
                 /> 
                 </div>
                 {showCityDropdown && (
@@ -231,15 +244,17 @@ const SearchBar = props => {
                   />
                   )}
             </span>
-        </>
+          </>
         )
     }
 
-    return (
+    return ( 
+
         <form onSubmit={handleSubmit} className={`SearchBar ${customClass}`}>
             {displayInputs()}
 
-            <Button 
+            <Button
+            type="submit" 
             formSubmit="true" 
             text={fetchingHospitals ? "Fetching..." : "Search" }
             icon={fetchingHospitals ? loadingIcon : searchIcon} 

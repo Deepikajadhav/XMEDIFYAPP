@@ -46,7 +46,7 @@ const Navbar = props => {
             )
         });
 
-        arr.push(<Link to="/bookings" style={transitionDelay} className={`menuItem ${menuPoisition} menuItem-forBookings`}><Button text="my bookings" buttonClass="largeButton "/></Link>);
+        arr.push(<Link to="/bookings" style={transitionDelay} className={`menuItem ${menuPoisition} menuItem-forBookings`}><Button buttonClass="largeButton "/></Link>);
 
         return arr;
     } 
@@ -65,7 +65,7 @@ const Navbar = props => {
     const NavSearch = () => {
         if(atFindPage) return (
             <div className={"NavSearch"}>
-                <SearchBar />
+               {/* // <SearchBar /> */}
             </div>
         )
     }
@@ -73,7 +73,7 @@ const Navbar = props => {
     const BookingSearch = () => {
         if(atBookingsPage) return (
             <div className={"BookingSearch"}>
-                <span className='bookingsHeadline'>My Bookings</span>
+                 {/* <h1 className='bookingsHeadline'>My Bookings</h1>  ----------------//--------------------------------------------------------------------------------- */}
                 <div className='navSearchWrapper'>
                     <SearchBar atBookingsPage={true}/>
                 </div>
@@ -94,7 +94,7 @@ const Navbar = props => {
                     </div>
                 </Link>
                 <div className='navMenuButton'>
-                    <Button clickFuntion={handleMenuClick} buttonClass='whiteButton inheritBackground' icon={menuIcon} />
+            <Button clickFuntion={handleMenuClick} buttonClass='whiteButton inheritBackground' icon={menuIcon} />
                 </div>
                 <div className='navBody'>
                     <div className='navLinksDiv'>{displayLinks()}</div>

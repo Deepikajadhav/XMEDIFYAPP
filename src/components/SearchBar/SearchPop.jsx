@@ -35,7 +35,11 @@ const SearchPop = props => {
             <div className="SearchPop"> 
             <ul className='SearchPopList'>
             {locations.map((item,i) =>  (
-            <li key={i} onClick={() =>  clickFunction(item)} className='SearchPopItem'>{item}</li>))}
+            <li key={i} 
+            onClick={(e) => { e.preventDefault();     
+            e.stopPropagation(); 
+            clickFunction(item);}}
+            className='SearchPopItem'>{item}</li>))}
      </ul>
      </div>
      ); 
