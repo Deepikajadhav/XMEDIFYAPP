@@ -3,6 +3,7 @@ import "./Button.css";
 const Button = ({
   id,
   text,
+  type,
   buttonClass = "",
   icon,
   clickFuntion,

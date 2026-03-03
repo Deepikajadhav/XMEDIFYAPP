@@ -40,7 +40,7 @@ export default function MyBookings() {
               spacing={{ xs: 0, md: 12 }}
               alignItems={{ xs: "center", md: "flex-end" }}
             >
-              <Typography
+              {/* <Typography
                 component="h1"
                 pb={1}
                 fontSize={{ xs: 32, md: 40 }}
@@ -48,7 +48,10 @@ export default function MyBookings() {
                 color="#fff"
               >
                 My Bookings
-              </Typography>
+              </Typography> */}  
+
+              <h1>My Bookings</h1> 
+              
               <Box
                 bgcolor="#fff"
                 p={3}
@@ -93,5 +96,5 @@ export default function MyBookings() {
         </Container>
       </Box>
     </>
-  );
+  ); 
 }

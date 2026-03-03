@@ -42,7 +42,12 @@ const ResultCard = props => {
             dateTime, data: { hospitalName, county, city, rating, hospitalType }
         }]
         //save bookings to local
-        localStorage.setItem("bookings", JSON.stringify(saveBookings))
+        //localStorage.setItem("bookings", JSON.stringify(saveBookings))  
+
+        useEffect(() => {
+       const stored = localStorage.getItem("bookings") || "[]";
+       setBookings(JSON.parse(stored));
+       }, []);
 
         //save to context
         setBookings(saveBookings);
@@ -78,7 +83,7 @@ const ResultCard = props => {
                 </div>
                 <div className='resultCardContent'>
                     <div className='resultContent-left'>
-                        <h3 className='CommonHeader'>{hospitalName}</h3>
+                        <h3 className='CommonHeader'>{hospitalName.toLowerCase()}</h3>
                         <div className='resultLocation'>
                             <span className='resultCity'>{`${county}, ${city}`}</span>
                             <span className='resultCardSubtext'>{hospitalType}</span>

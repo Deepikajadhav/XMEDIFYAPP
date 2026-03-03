@@ -35,7 +35,10 @@ const SearchBar = props => {
     const [filteredHospitals, setFilteredHospitals] = useState([]);
     const [fetchingHospitals, setFetchingHospitals] = useState(false);
     const [showStateDropdown, setShowStateDropdown] = useState(false);
-    const [showCityDropdown, setShowCityDropdown] = useState(false); 
+    const [showCityDropdown, setShowCityDropdown] = useState(false);  
+
+    const [selectedState, setSelectedState] = useState("");
+    const [selectedCity, setSelectedCity] = useState("");
     
     
     //refs
@@ -67,22 +70,19 @@ const SearchBar = props => {
     });
    }, []); 
 
-    //functions
+       //functions
       const handleSubmit = (e) => {
-//       e.preventDefault();
+      //e.preventDefault();  
+       //if (stateName && cityName) {
+      //navigate(`/find?state=${stateName}&city=${cityName}`); 
+      //   }    
 
-//      if (stateName && cityName) {
-//      navigate(`/find?state=${stateName}&city=${cityName}`); 
-//   }  
+         if (!selectedState || !selectedCity) {
+         console.warn("Please select state and city");
+          return;
+  }
 
-         if (!state || !city) return;
-
-    navigate("/find", {
-      state: {
-        selectedState: state,
-        selectedCity: city
-      }
-    });
+      navigate(`/find?state=${selectedState}&city=${selectedCity}`);
   };
 
     const getLocationData = async (dataType, location) => {

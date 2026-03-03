@@ -65,7 +65,7 @@ const Navbar = props => {
     const NavSearch = () => {
         if(atFindPage) return (
             <div className={"NavSearch"}>
-               {/* // <SearchBar /> */}
+                <SearchBar />
             </div>
         )
     }

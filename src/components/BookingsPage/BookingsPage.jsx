@@ -10,7 +10,8 @@ const BookingsPage = () => {
             <AppTop />  
             <Navbar atBookingsPage={true} backColor="whiteBack" />
             
-            <Bookings />
+            {/* <Bookings />  */}
+            <Route path="/my-bookings" element={<Bookings />} />
         </>
     );
 };

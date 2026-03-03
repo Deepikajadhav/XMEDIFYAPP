@@ -9,9 +9,9 @@ export default function HospitalSearch() {
   const [cities, setCities] = useState([]);
   const [formData, setFormData] = useState({ state: "", city: "" });
   const [searchParams] = useSearchParams();
-const selectedState = searchParams.get("state");
-const selectedCity = searchParams.get("city");
-const [hospitals, setHospitals] = useState([]);
+  const selectedState = searchParams.get("state");
+  const selectedCity = searchParams.get("city");
+  const [hospitals, setHospitals] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -29,11 +29,12 @@ const [hospitals, setHospitals] = useState([]);
     fetchStates();
   }, []);  
 
-   useEffect(() => {
-  if (selectedState && selectedCity) {
-    fetchHospitals(selectedState, selectedCity);
-  }
-}, [selectedState, selectedCity]);
+//    useEffect(() => {
+//   if (selectedState && selectedCity) {
+//     fetchHospitals(selectedState, selectedCity);
+//   }
+// }, [selectedState, selectedCity]);
+
 
   useEffect(() => {
     const fetchCities = async () => {
@@ -138,13 +139,15 @@ const [hospitals, setHospitals] = useState([]);
 
       <Button
         type="submit"
+        id="searchBtn"
         variant="contained"
         size="large"
         startIcon={<SearchIcon />}
         sx={{ py: "15px", px: 8, flexShrink: 0 }}
-        disableElevation
+        disableElevation  
+        onClick ={handleSubmit}
       >
-        Search
+         Search
       </Button>
     </Box>
   );
