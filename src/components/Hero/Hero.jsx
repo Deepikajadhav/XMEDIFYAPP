@@ -30,7 +30,7 @@ const Hero = () => {
                 </div>
                 <SearchComp />
             </div>
-        </div>
+        </div> 
     );
 };
 

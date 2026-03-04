@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import axios, { all } from 'axios';
 //styles
 import "./SearchBar.css"
@@ -37,14 +38,15 @@ const SearchBar = props => {
     const [showStateDropdown, setShowStateDropdown] = useState(false);
     const [showCityDropdown, setShowCityDropdown] = useState(false);  
 
-    const [selectedState, setSelectedState] = useState("");
-    const [selectedCity, setSelectedCity] = useState("");
-    
     
     //refs
     const stateName_onChange = useRef(false);
     const cityName_onChange = useRef(false);
-    const fetchingCities = useRef(false);
+    const fetchingCities = useRef(false);  
+
+
+    const navigate = useNavigate();
+
     //side effects
     useEffect(()=> {
         if(stateName_onChange.current) filterStatesFunc();
@@ -71,18 +73,17 @@ const SearchBar = props => {
    }, []); 
 
        //functions
-      const handleSubmit = (e) => {
-      //e.preventDefault();  
-       //if (stateName && cityName) {
-      //navigate(`/find?state=${stateName}&city=${cityName}`); 
-      //   }    
-
-         if (!selectedState || !selectedCity) {
+       const handleSubmit = async (e) => {
+       e.preventDefault();  
+        
+         if (!stateName || !cityName) {
          console.warn("Please select state and city");
-          return;
-  }
+          return; 
 
-      navigate(`/find?state=${selectedState}&city=${selectedCity}`);
+       
+  }
+        await getLocationData("hospitals");     
+         navigate(`/searchResults`);
   };
 
     const getLocationData = async (dataType, location) => {
@@ -162,10 +163,13 @@ const SearchBar = props => {
        if (allStates.length && showStateDropdown) {
          setFilteredStates(allStates);
          }
-       }, [allStates, showStateDropdown]);
+       }, [allStates, showStateDropdown]); 
+
+    //    console.log("Selected State:", selectedState);
+    //    console.log("Selected City:", selectedCity);
 
 
-    const displayInputs = () => {
+        const displayInputs = () => {
         if(atBookingsPage){
             return (
             <span className='inputWrapper'>
@@ -244,7 +248,7 @@ const SearchBar = props => {
                   />
                   )}
             </span>
-          </>
+        </>
         )
     }
 

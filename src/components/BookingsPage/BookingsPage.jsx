@@ -1,4 +1,5 @@
 import React from 'react';
+import { Route, Routes } from 'react-router-dom';
 //components
 import Bookings from '../Bookings/Bookings';
 import AppTop from '../AppTop/AppTop';
@@ -11,7 +12,9 @@ const BookingsPage = () => {
             <Navbar atBookingsPage={true} backColor="whiteBack" />
             
             {/* <Bookings />  */}
-            <Route path="/my-bookings" element={<Bookings />} />
+            <Routes>
+            <Route path="/my-bookings" element={<Bookings />} /> 
+            </Routes>
         </>
     );
 };

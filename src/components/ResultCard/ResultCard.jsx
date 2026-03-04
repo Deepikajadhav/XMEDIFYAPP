@@ -42,12 +42,12 @@ const ResultCard = props => {
             dateTime, data: { hospitalName, county, city, rating, hospitalType }
         }]
         //save bookings to local
-        //localStorage.setItem("bookings", JSON.stringify(saveBookings))  
+        localStorage.setItem("bookings", JSON.stringify(saveBookings))  
 
-        useEffect(() => {
-       const stored = localStorage.getItem("bookings") || "[]";
-       setBookings(JSON.parse(stored));
-       }, []);
+    //     useEffect(() => {
+    //    const stored = localStorage.getItem("bookings") || "[]";
+    //    setBookings(JSON.parse(stored));
+    //    }, []);
 
         //save to context
         setBookings(saveBookings);
