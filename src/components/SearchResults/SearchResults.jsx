@@ -162,7 +162,7 @@ import axios from "axios";
 import { FoundHospitalsContext } from "../../contexts/AllContexts";
 import ResultCard from "../ResultCard/ResultCard";
 
-const SearchResults = () => {
+  const SearchResults = () => {
   const [searchParams] = useSearchParams();
   const state = searchParams.get("state");
   const city = searchParams.get("city");

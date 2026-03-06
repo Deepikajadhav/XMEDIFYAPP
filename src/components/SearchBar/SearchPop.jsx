@@ -27,12 +27,11 @@ const SearchPop = props => {
             });
         } 
 
-         console.log("STATE LOCATIONS:", locations); // 👈 ADD THIS LINE
+        console.log("STATE LOCATIONS:", locations); // 👈 ADD THIS LINE
 
         if(!locations || !locations?.length) return null;
 
-        return(  
-            <div className="SearchPop"> 
+        return(   
             <ul className='SearchPopList'>
             {locations.map((item,i) =>  (
             <li key={i} 
@@ -41,7 +40,7 @@ const SearchPop = props => {
             clickFunction(item);}}
             className='SearchPopItem'>{item}</li>))}
      </ul>
-     </div>
+
      ); 
     }
     return (
