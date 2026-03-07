@@ -137,7 +137,7 @@ export default function HospitalSearch() {
         ))}
       </Select>
 
-      <Button
+      <button
         type="submit"
         id="searchBtn"
         variant="contained"
@@ -148,7 +148,7 @@ export default function HospitalSearch() {
         onClick ={handleSubmit}
       >
          Search
-      </Button>
+      </button>
     </Box>
   );
 }

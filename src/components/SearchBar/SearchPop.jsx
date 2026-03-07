@@ -38,8 +38,8 @@ const SearchPop = props => {
             onClick={(e) => { e.preventDefault();     
             e.stopPropagation(); 
             clickFunction(item);}}
-            className='SearchPopItem'>{item}</li>))}
-     </ul>
+            className='SearchPopItem'>{item}</li>))} 
+             </ul>
 
      ); 
     }
