@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 //components
-import Bookings from '../Bookings/MyBookings';
+import Mybookings from '../Bookings/my-bookings';
 import AppTop from '../AppTop/AppTop';
 import Navbar from '../Navbar/Navbar';
 
@@ -10,10 +10,8 @@ const BookingsPage = () => {
         <>
             <AppTop />  
             <Navbar atBookingsPage={true} backColor="whiteBack" />
-            
-            {/* <Bookings />  */}
             <Routes>
-            <Route path="/my-bookings" element={<Bookings />} /> 
+            <Route path="/my-bookings" element={<Mybookings />} /> 
             </Routes>
         </>
     );

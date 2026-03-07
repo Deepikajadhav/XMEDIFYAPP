@@ -7,7 +7,7 @@ import { BookingsContext } from '../../contexts/AllContexts';
 import ResultCard from '../ResultCard/ResultCard';
 import SearchBar from '../SearchBar/SearchBar'
 
-const Bookings = () => {
+const mybookings = () => {
     //contexts
     const [bookings, setBookings] = useContext(BookingsContext); 
 
@@ -64,4 +64,4 @@ const Bookings = () => {
     );
 };
 
-export default Bookings;
+export default mybookings;

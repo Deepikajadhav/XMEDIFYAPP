@@ -119,6 +119,7 @@ export default function HospitalSearch() {
         name="city"
         value={formData.city}
         onChange={handleChange}
+        disabled={!formData.state || isCitiesLoading}
         startAdornment={
           <InputAdornment position="start">
             <SearchIcon />
