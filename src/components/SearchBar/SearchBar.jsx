@@ -83,7 +83,6 @@ const SearchBar = props => {
        
   }
         await getLocationData("hospitals");     
-         navigate(`/searchResults`);
   };
 
     const getLocationData = async (dataType, location) => {
