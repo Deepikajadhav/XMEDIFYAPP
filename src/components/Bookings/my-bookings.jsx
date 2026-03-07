@@ -11,7 +11,6 @@ const Bookings = () => {
     //contexts
     const [bookings, setBookings] = useContext(BookingsContext); 
 
-   
     //functions
     const displayCards = () => {
         if(bookings?.length == 0) return null;
