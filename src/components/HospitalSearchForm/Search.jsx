@@ -76,59 +76,39 @@ function Search() {
       }}
     > 
     
-<div id="state">
-      <Select
-        displayEmpty
-        id="state"
-        name="state"
-        value={formData.state}
-        onChange={handleChange}
-        startAdornment={
-          <InputAdornment position="start">
-            <SearchIcon />
-          </InputAdornment>
-        }
-        required
-        sx={{ minWidth: 200, width: "100%" }}
-      >
-        <MenuItem disabled value="">
-          State
-        </MenuItem>
-        {states.length > 0 &&
-          states.map((state) => (
-            <MenuItem key={state} value={state}>
-              {state}
-            </MenuItem>
-          ))}
-      </Select> 
-      </div> 
+    <div id="state">
+  <select
+    name="state"
+    value={formData.state}
+    onChange={handleChange}
+    required
+    style={{ minWidth: 200, width: "100%", padding: "8px" }}
+  >
+    <option value="">State</option>
+    {states.map((state) => (
+      <option key={state} value={state}>
+        {state}
+      </option>
+    ))}
+  </select>
+</div>
 
       <div id="city">
-      <Select
-        displayEmpty
-        id="city"
-        name="city"
-        value={formData.city}
-        onChange={handleChange}
-        startAdornment={
-          <InputAdornment position="start">
-            <SearchIcon />
-          </InputAdornment>
-        }
-        required
-        sx={{ minWidth: 200, width: "100%" }}
-      >
-        <MenuItem disabled value="">
-          City
-        </MenuItem>
-        {cities.length > 0 &&
-          cities.map((city) => (
-            <MenuItem key={city} value={city}>
-              {city}
-            </MenuItem>
-          ))}
-      </Select> 
-      </div>
+  <select
+    name="city"
+    value={formData.city}
+    onChange={handleChange}
+    required
+    style={{ minWidth: 200, width: "100%", padding: "8px" }}
+  >
+    <option value="">City</option>
+    {cities.map((city) => (
+      <option key={city} value={city}>
+        {city}
+      </option>
+    ))}
+  </select>
+</div>
 
      <Button
       type="submit"
