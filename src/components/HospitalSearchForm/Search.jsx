@@ -200,7 +200,7 @@ export default function SearchHospital() {
      <div id="state">
       <Select
         displayEmpty
-        id="state"
+        native
         name="state"
         value={formData.state}
         onChange={handleChange}
@@ -227,7 +227,7 @@ export default function SearchHospital() {
       <div id="city">
       <Select
         displayEmpty
-        id="city"
+        native
         name="city"
         value={formData.city}
         onChange={handleChange}
