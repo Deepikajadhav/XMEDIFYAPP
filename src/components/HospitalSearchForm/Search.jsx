@@ -89,7 +89,7 @@ function Search() {
         required
         sx={{ minWidth: 200, width: "100%" }}
       >
-        <MenuItem disabled value="" selected>
+        <MenuItem disabled value="">
           State
         </MenuItem>
         {states.length > 0 &&
@@ -114,7 +114,7 @@ function Search() {
         required
         sx={{ minWidth: 200, width: "100%" }}
       >
-        <MenuItem disabled value="" selected>
+        <MenuItem disabled value="">
           City
         </MenuItem>
         {cities.length > 0 &&
