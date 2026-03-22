@@ -125,17 +125,19 @@ function Search() {
           ))}
       </Select>
 
-      <Button
-        type="submit"
-        id="searchBtn"
-        variant="contained"
-        size="large"
-        startIcon={<SearchIcon />}
-        sx={{ py: "15px", px: 8, flexShrink: 0 }}
-        disableElevation
-      >
-        Search
-      </Button>
+     <Button
+      type="submit"
+      id="searchBtn"  // important for Cypress
+      variant="contained"
+      size="large"
+      startIcon={<SearchIcon />}
+     sx={{ py: "15px", px: 8, flexShrink: 0 }}
+     disableElevation
+     disabled={formData.state === "" || formData.city === ""} // <-- key 
+     change
+    >
+    Search
+  </Button>
     </Box>
   );
 }
