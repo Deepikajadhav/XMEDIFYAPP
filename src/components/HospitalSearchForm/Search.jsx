@@ -198,56 +198,44 @@ export default function SearchHospital() {
     >  
      {/* State Dropdown */}
      <div id="state">
-      <Select
-        displayEmpty
-        native
-        name="state"
-        value={formData.state}
-        onChange={handleChange}
-        startAdornment={
-          <InputAdornment position="start">
-            <SearchIcon />
-          </InputAdornment>
-        }
-        required
-        sx={{ minWidth: 200, width: "100%" }}
-      >
-        <MenuItem disabled value="">
-          Select State
-        </MenuItem>
-        {states.map((state) => (
-          <MenuItem key={state} value={state}>
-            {state}
-          </MenuItem>
-        ))}
-      </Select> 
-      </div> 
+        <Select
+          native
+          name="state"
+          value={formData.state}
+          onChange={handleChange}
+          required
+          sx={{ minWidth: 200, width: "100%" }}
+        >
+          <option value="" disabled>
+            Select State
+          </option>
+          {states.map((state) => (
+            <option key={state} value={state}>
+              {state}
+            </option>
+          ))}
+        </Select>
+      </div>
 
-      {/* City Dropdown */} 
+      {/* City Dropdown */}
       <div id="city">
-      <Select
-        displayEmpty
-        native
-        name="city"
-        value={formData.city}
-        onChange={handleChange}
-        startAdornment={
-          <InputAdornment position="start">
-            <SearchIcon />
-          </InputAdornment>
-        }
-        required
-        sx={{ minWidth: 200, width: "100%" }}
-      >
-        <MenuItem disabled value="">
-          Select City
-        </MenuItem>
-        {cities.map((city) => (
-          <MenuItem key={city} value={city}>
-            {city}
-          </MenuItem>
-        ))}
-      </Select> 
+        <Select
+          native
+          name="city"
+          value={formData.city}
+          onChange={handleChange}
+          required
+          sx={{ minWidth: 200, width: "100%" }}
+        >
+          <option value="" disabled>
+            Select City
+          </option>
+          {cities.map((city) => (
+            <option key={city} value={city}>
+              {city}
+            </option>
+          ))}
+        </Select>
       </div>
 
       {/* Search Button */}
