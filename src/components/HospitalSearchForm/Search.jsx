@@ -74,7 +74,9 @@ function Search() {
         justifyContent: "space-between",
         flexDirection: { xs: "column", md: "row" },
       }}
-    >
+    > 
+    
+<div id="state">
       <Select
         displayEmpty
         id="state"
@@ -98,8 +100,10 @@ function Search() {
               {state}
             </MenuItem>
           ))}
-      </Select>
+      </Select> 
+      </div> 
 
+      <div id="city">
       <Select
         displayEmpty
         id="city"
@@ -123,7 +127,8 @@ function Search() {
               {city}
             </MenuItem>
           ))}
-      </Select>
+      </Select> 
+      </div>
 
      <Button
       type="submit"
