@@ -195,8 +195,9 @@ export default function SearchHospital() {
         justifyContent: "space-between",
         flexDirection: { xs: "column", md: "row" },
       }}
-    >
-      {/* State Dropdown */}
+    >  
+     {/* State Dropdown */}
+     <div id="state">
       <Select
         displayEmpty
         id="state"
@@ -219,9 +220,11 @@ export default function SearchHospital() {
             {state}
           </MenuItem>
         ))}
-      </Select>
+      </Select> 
+      </div> 
 
-      {/* City Dropdown */}
+      {/* City Dropdown */} 
+      <div id="city">
       <Select
         displayEmpty
         id="city"
@@ -244,7 +247,8 @@ export default function SearchHospital() {
             {city}
           </MenuItem>
         ))}
-      </Select>
+      </Select> 
+      </div>
 
       {/* Search Button */}
       <Button
