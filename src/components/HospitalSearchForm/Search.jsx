@@ -133,8 +133,7 @@ function Search() {
       startIcon={<SearchIcon />}
      sx={{ py: "15px", px: 8, flexShrink: 0 }}
      disableElevation
-     disabled={formData.state === "" || formData.city === ""} // <-- key 
-     change
+     disabled={formData.state === "" || formData.city === ""} 
     >
     Search
   </Button>
