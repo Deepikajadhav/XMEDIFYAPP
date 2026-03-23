@@ -206,13 +206,13 @@ export default function SearchHospital() {
           required
           sx={{ minWidth: 200, width: "100%" }}
         >
-          <option value="" disabled>
+          <MenuItem value="" disabled>
             Select State
-          </option>
+          </MenuItem>
           {states.map((state) => (
-            <option key={state} value={state}>
+            <MenuItem key={state} value={state}>
               {state}
-            </option>
+            </MenuItem>
           ))}
         </Select>
       </div>
@@ -227,13 +227,13 @@ export default function SearchHospital() {
           required
           sx={{ minWidth: 200, width: "100%" }}
         >
-          <option value="" disabled>
+          <MenuItem value="" disabled>
             Select City
-          </option>
+          </MenuItem>
           {cities.map((city) => (
-            <option key={city} value={city}>
+            <MenuItem key={city} value={city}>
               {city}
-            </option>
+            </MenuItem>
           ))}
         </Select>
       </div>
