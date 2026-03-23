@@ -199,7 +199,7 @@ export default function SearchHospital() {
      {/* State Dropdown */}
      <div id="state">
         <Select
-          native
+          displayEmpty
           name="state"
           value={formData.state}
           onChange={handleChange}
@@ -220,13 +220,13 @@ export default function SearchHospital() {
       {/* City Dropdown */}
       <div id="city">
         <Select
-          native
+          displayEmpty
           name="city"
           value={formData.city}
           onChange={handleChange}
           required
           sx={{ minWidth: 200, width: "100%" }}
-        >
+        > 
           <MenuItem value="" disabled>
             Select City
           </MenuItem>
